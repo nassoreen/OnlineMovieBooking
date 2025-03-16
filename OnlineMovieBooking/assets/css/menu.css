@@ -1,0 +1,1970 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+:root {
+  --bs-gutter-x: 2rem; /* ปรับค่า gutter ให้เป็น 2rem */
+  --bs-gutter-y: 1rem; /* หากต้องการเปลี่ยนค่า gutter แนวตั้ง */
+}
+
+body{ 
+    font-family: "IBM Plex Sans Thai", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    color: #d1d0cf;
+    background: linear-gradient(120deg, #075596, #000000 35% );
+}
+
+   /* 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /                                                                                                                                  /
+  /                                                         แท็บเมนู                                                                   /
+  /                                                                                                                                   /
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+  
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+  background-color: rgba(20, 20, 20, 0.5) !important;
+  color: #fff;
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  position: fixed;  /* ทำให้คงที่ */
+  top: 0;           /* ตำแหน่งด้านบนของหน้า */
+  left: 0;
+  width: 100%;      /* ให้กว้างเต็มหน้าจอ */
+  height: 85px;
+  z-index: 999;     /* แสดงอยู่เหนือเนื้อหาอื่น */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* เพิ่มเงาเพื่อให้เด่นขึ้น */
+}   
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: 700;
+  
+}
+
+.logo {
+ margin-top: 0; /* เลื่อนโลโก้ขึ้นด้านบนด้วย margin ลบ */
+}
+
+.navbar .logo-img {
+  width: 250px;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  align-items: center; /* เพิ่ม align-items เพื่อตั้งตำแหน่งเมนูให้ดีขึ้น */
+  margin-top: 15px;
+}
+
+.nav-list li {
+  margin: 0 15px;
+}
+
+.nav-list a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-list a:hover {
+  color: #f0a500; /* Change color on hover */
+}
+
+.btn a {
+  background-color: #f0a500;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn a:hover {
+  background-color: #d89f00; /* Color on hover */
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none; /* Hide hamburger on large screens */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.line {
+  height: 3px;
+  width: 25px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-list {
+      display: none; /* Hide menu items on mobile */
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #333;
+      width: 100%;
+      padding: 10px 0;
+  }
+
+  .nav-list.show {
+      display: flex; /* Show menu when clicked */
+  }
+
+  .hamburger {
+      display: flex; /* Show hamburger on small screens */
+  }
+
+  .nav-list li {
+      margin: 10px 0; /* Increased spacing in mobile view */
+      text-align: center;
+  }
+}
+
+
+
+
+
+/* /////////////////////////////////////   ดรอปดาวโปรไฟล์ /////////////////////////////// */
+
+
+
+/* Profile Dropdown Container */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-dropdown-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.profile-img {
+  display: flex;
+  align-items: center;
+}
+
+.profile-img img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile-img i {
+  font-size: 35px;
+  margin-right: 10px;
+}
+
+.profile-dropdown-list {
+  display: none;
+  position: absolute;
+  list-style-type: none; /* เอาจุดออก */
+  top: 60px;
+  right: 0;
+  background-color: #333;
+  padding: 10px;
+  width: 200px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.profile-dropdown-list.active {
+  display: block;
+}
+
+.profile-dropdown-list-item {
+  padding: 5px;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.profile-dropdown-list-item:last-child {
+  border-bottom: none;
+}
+
+.profile-dropdown-list-item a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;    
+}
+
+.profile-dropdown-list-item a i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.profile-dropdown-list-item a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+
+
+
+
+/* 
+/////////////////////////////////////// pupup login and register ////////////////////////////////////// */
+
+
+/* Custom styles for modals */
+.modal-content {
+  border-radius: 10px; /* Rounded corners for the modal */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.modal-header {
+  background-color: #084daa; /* Blue background for header */
+  color: #ffa900; /* White text color for header */
+  border-bottom: 2px solid #0056b3; /* Darker border for bottom of header */
+}
+
+.modal-title {
+  font-weight: bold; /* Bold title */
+  font-size: 1.5rem; /* Larger font size for the title */
+}
+
+.modal-body {
+  padding: 20px; /* Increased padding for body */
+  background-color: black;
+}
+
+.form-label {
+  font-weight: 600; /* Bold labels */
+}
+
+.form-control {
+  border-radius: 5px; /* Rounded corners for inputs */
+  border: 1px solid #ffa900; /* Light border color */
+  transition: border-color 0.3s; /* Smooth transition for focus */
+}
+
+.form-control:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light shadow on focus */
+}
+
+.btn-primary {
+  background-color: #0056b3; /* Primary button color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners for buttons */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.btn-primary:hover {
+  background-color: #ffa900; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.btn-close {
+  background-color: transparent; /* Transparent background for close button */
+  color: white; /* White color for close button */
+}
+
+
+
+
+
+
+
+   /* 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /                                                                                                                                  /
+  /                                                         หน้าหลัก                                                                  /
+  /                                                                                                                                   /
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+  .hero {
+    background: url('../img/slider1.jpg') no-repeat; /* Corrected the folder name */
+    background-size: cover;
+    background-position: right;
+    height: 90vh;   
+    max-height: 1000px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 30px;
+}
+
+.hero .main .content{
+    max-width: 60%;
+}
+.hero .main .content p{
+    font-size: 26px;
+    font-weight: 700;
+    color: #e2d703;
+    margin-bottom: 0.5rem;
+}
+.hero .content h1{
+    font-size: 50px;
+    color: #fff;
+    line-height: 62px;
+}
+.hero .content strong{
+    color: #e2d703;
+}
+.hero .meta-wrapper{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+.hero .meta-wrapper .badge span:nth-child(1){
+    background-color: #fff;
+    color: #171d21;
+    font-weight: 700;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-right: 0.5rem;
+}
+.hero .meta-wrapper .badge span:nth-child(2){
+    background-color: #171d21;
+    color: #fff;
+    border: 2px solid #fff;
+    font-weight: 700;
+    padding: 3px 10px;
+    font-size: 12px;
+}
+.hero .meta-wrapper .genre a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+}
+.hero .meta-wrapper .genre a:hover{
+    color: #e2d703;
+}
+.hero .meta-wrapper .date-time span{
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+.hero .meta-wrapper .date-time span:nth-child(1){
+    margin-right: 0.5rem;
+}
+.hero .date-time i{
+    color: #e2d703;
+}
+.hero .watch-btn{
+    margin-top: 3.4rem;
+}
+.hero .watch-btn i{
+    margin-right: 0.5rem;
+}
+.hero .content .watch-btn button{
+    border: 2px solid #e2d703;
+    color: #fff;
+    padding: 13px 30px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: 700;
+    background-color: #1d1a28;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+.hero .content .watch-btn button:is(:hover, :focus) {
+    background: #e2d703;
+    color: #1d1a28;
+}
+.upcoming-movie{
+    background: url(../images/upcoming-bg.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 100px 30px;
+}
+.upcoming-movie .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.upcoming-movie .header .subtitle small{
+    font-size: 12px;
+    color: #e2d703;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.upcoming-movie .header .subtitle h4{
+    font-size: 40px;
+    color: #fff;
+}
+.upcoming-movie .header .buttons{
+    display: flex;
+    gap: 1rem;
+}
+.upcoming-movie .header .buttons button{
+    color: #fff;
+    background-color: #21232b;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 2px solid #2e303e;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.upcoming-movie .header .buttons button:focus{
+    border: 2px solid #e2d703;
+}
+
+.upcoming-movie .movie-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+.wrapper {
+    width: 100%;
+    position: relative;
+  }
+  
+  .wrapper .movie-carousel{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 15px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 30px;
+    border-radius: 8px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  .movie-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  .movie-carousel.no-transition {
+    scroll-behavior: auto;
+  }
+  .movie-carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+  .movie-carousel.dragging .card {
+    cursor: grab;
+    user-select: none;
+  }
+  .movie-carousel :where(.card) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .movie-carousel .card {
+    scroll-snap-align: start;
+    list-style: none;
+    background: transparent;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+.movie-carousel .card .img img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.movie-carousel .card .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+.movie-carousel .card .title a{
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+.movie-carousel .card .title a:hover{
+    color: #e2d703;
+}
+.movie-carousel .card .title span{
+    color: #e2d703;
+    font-weight: 600;
+    font-size: 14px;
+}
+.movie-carousel .card .footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+.movie-carousel .card .footer span{
+    color: #e2d703;
+    padding: 3px 10px;
+    border: 2px solid #fff;
+    font-size: 12px;
+    font-weight: 600;
+
+}
+.movie-carousel .card .footer .time-rating span{
+    color: #fff;
+    padding: 0px;
+    border: none;
+}
+.movie-carousel .card .footer .time-rating i{
+    color: #e2d703;
+    margin-right: 0.3rem;
+}
+
+.service{
+    background: url(../images/service-bg.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 100px 30px;
+}
+.service .main{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.service .main .img img{
+    width: 90%;
+}
+.service .content {
+    width: 50%;
+}
+.service .content small{
+    font-size: 13px;
+    color: #bdbdbd;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.service .content h4{
+    font-size: 40px;
+    color: #fff;
+    line-height: 52px;
+    margin: 0.5rem 0rem;
+}
+.service .content p{
+    color: #bdbdbd;
+    font-size: 15px;
+    font-weight: 500;
+}
+.service .content ul{
+    margin-top: 2rem;
+}
+.service .content ul li{
+    list-style: none;
+    margin-top: 1rem;
+}
+.service .content li .service-card{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.service li .service-card .img{
+    border: 1px dashed #e2d703;
+    padding: 5px;
+    border-radius: 50%;
+}
+.service hr{
+    border: none;
+    border-bottom: 1px dashed hsla(0, 0%, 100%, 0.1);
+    height: 2px;
+    outline: none;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.service li .service-card .icon{
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 50%;
+    transition: 0.3s ease-in-out;
+}
+.service li .service-card i{
+    color: #fff;
+    font-size: 30px;
+}
+.service li .service-card:hover .icon{
+    background-color: #e2d703;
+}
+.service li .service-card h5{
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+/* //////////////// */
+
+
+.top-movie{
+    background: url(../images/top-rated-bg.jpg) no-repeat;
+    background-size: cover;
+    padding: 100px 30px;
+}
+.top-movie .header,.tv-series .header{
+    text-align: center;
+}
+.top-movie .header small,.tv-series .header small{
+    color: #e2d703;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+}
+.top-movie .header h4,.tv-series .header h4{
+    color: #fff;
+    font-size: 40px;
+}
+.top-movie .top-movie-main .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+.top-movie .top-movie-main .buttons button{
+    background-color: #0a0f0f;
+    color: #cecaca;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 12px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: 2px solid #000000cc;
+    transition: 0.3s ease-in-out;
+}
+.top-movie .top-movie-main .buttons button:is(:hover,:focus) {
+    color: #e2d703;
+    text-shadow: 0 3px 25px hsl(57deg 97% 45% / 50%);
+}
+.same .wrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    justify-content: center;
+    row-gap: 50px;
+    column-gap: 30px;
+    margin-top: 3rem;
+}
+.same .wrapper .card{
+    width: 100%;
+}
+.movie-card .card .img img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.movie-card .card .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+.movie-card .card .title a{
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+.movie-card .card .title a:hover{
+    color: #e2d703;
+}
+.movie-card .card .title span{
+    color: #e2d703;
+    font-weight: 600;
+    font-size: 14px;
+}
+.movie-card .card .footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+.movie-card .card .footer span{
+    color: #e2d703;
+    padding: 3px 10px;
+    border: 2px solid #fff;
+    font-size: 12px;
+    font-weight: 600;
+
+}
+.movie-card .card .footer .time-rating span{
+    color: #fff;
+    padding: 0px;
+    border: none;
+}
+.movie-card .card .footer .time-rating i{
+    color: #e2d703;
+    margin-right: 0.3rem;
+}
+
+.tv-series{
+    background: url(../images/tv-series-bg.jpg) no-repeat;
+    background-size: cover;
+    padding: 100px 30px;
+}
+
+.trial{
+    background: url(../images/cta-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 30px;
+}
+.trial .main{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.trial .content h4{
+    font-size: 30px;
+    text-transform: uppercase;
+}
+.trial .content p{
+    font-size: 15px;
+    font-weight: 500;
+}
+.trial .form .input{
+    background-color: #fff;
+    width: 400px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+.trial .form .input input{
+    width: calc(100%/2);
+    height: 40px;
+    padding: 0px 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.trial .form button{
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 10px 18px;
+    background-color: #0a0f0f;
+    color: #e2d703;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.trial .form button:hover{
+    color: #0a0f0f;
+    border: 2px solid #0a0f0f;
+    background-color: #e2d703;
+}
+
+
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero Section Text Animation */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero .content h1 {
+  animation: slideIn 1s ease-in-out;
+}
+
+.hero .watch-btn button {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.watch-btn button {
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Button hover effect */
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Movie card hover effect */
+.movie-card .card:hover {
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
+}
+
+/* Service section animation */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.service .service-card {
+  animation: popIn 1.5s ease-in-out;
+}
+
+/* Footer social icon hover effect */
+.social-links a:hover {
+  transform: rotate(360deg);
+  transition: transform 0.6s;
+}
+
+/* Back to top button animation */
+.back-to-top {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  background-color: #ff5733;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+}
+
+    
+
+
+
+
+
+
+
+
+   /* 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /                                                                                                                                  /
+  /                                                         หน้าภาพยนต์                                                                /
+  /                                                                                                                                   /
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+.second {
+    width: 100%;
+    height: auto;
+    padding: 25px;
+    margin: 0 auto;
+    padding-bottom: 25px;
+}
+
+.second .latest {
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+
+.second .container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* จัดกึ่งกลางการ์ดในแนวนอน */
+    flex-wrap: wrap; /* ให้การ์ดสามารถลงมาในแถวใหม่ได้ */
+}
+
+
+.second .row .custom-card {
+    width: 250px;
+    height: 370px;
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.second .custom-card .card .details {
+    width: 250px;
+    height: 370px;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 8px;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.second .custom-card .card:hover .details {
+    opacity: 1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.7));
+}
+
+.second .custom-card .card .details .left {
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    transform: translateX(-100px);
+    transition: 0.4s;
+    opacity: 0;
+}
+
+.second .custom-card .card:hover .details .left {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.second .custom-card .card .details .left p.name {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.second .custom-card .card .details .left .date_quality {
+    display: flex;
+    align-items: center;
+}
+
+.second .custom-card .card .details .left .date_quality p.quality {
+    width: 30px;
+    font-size: 13px;
+    background: #ffe100;
+    color: #282931;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.second .custom-card .card .details .left .date_quality p.date {
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 8px;
+}
+
+.second .custom-card .card .details .left p.category {
+    margin-left: 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.second .custom-card .card .details .left .info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.second .custom-card .card .details .left .info .rate {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.second .custom-card .card .details .left .info .rate i {
+    font-size: 12px;
+    color: #ffd500;
+    margin-right: 5px;
+}
+
+.second .custom-card .card .details .left .info .rate p {
+    font-size: 12px;
+}
+
+.second .custom-card .card .details .left .info .time {
+    display: flex;
+    align-items: center;
+}
+
+.second .custom-card .card .details .left .info .time i {
+    font-size: 12px;
+    color: #ffd500;
+    margin-left: 5px;
+}
+
+.second .custom-card .card .details .left .info .time p {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.second .custom-card .card .details .right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    transform: translateX(100px);
+    transition: 0.4s;
+    opacity: 0;
+}
+
+.second .custom-card .card:hover .details .right {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.second .custom-card .card .details .right i {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #ffe100;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #282931;
+    margin: 0 10px 8px 0;
+}
+
+.second .custom-card .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  .upcoming{
+    width: 100%;
+    height: auto;
+    padding: 25px;
+    margin: 0 auto;
+    padding-bottom: 25px;
+  }
+  
+  .upcoming .movies_box{
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .upcoming .movies_box h1{
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .upcoming .movies_box .box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .upcoming .movies_box .box .card{
+    width: 250px;
+    height: 370px;
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .upcoming .movies_box .box .card .details{
+    width: 250px;
+    height: 370px;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 8px;
+    transition: 0.3s;
+    opacity: 0;
+  }
+  
+  .upcoming .movies_box .box .card:hover .details{
+    opacity: 1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.7));
+  }
+  
+  .upcoming .movies_box .box .card .details .left{
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    transform: translateX(-100px);
+    transition: 0.4s;
+    opacity: 0;
+  }
+  
+  .upcoming .movies_box .box .card:hover .details .left{
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .upcoming .movies_box .box .card .details .left p.name{
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .upcoming .movies_box .box .card .details .left .date_quality{
+    display: flex;
+    align-items: center;
+  }
+  
+  .upcoming .movies_box .box .card .details .left .date_quality p.quality{
+    width: 30px;
+    font-size: 13px;
+    background: #ffe100;
+    color: #282931;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .upcoming .movies_box .box .card .details .left .date_quality p.date{
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .upcoming .movies_box .box .card .details .left p.category{
+    margin-left: 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .upcoming .movies_box .box .card .details .left .info{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .upcoming .movies_box .box .card .details .left .info .time{
+    display: flex;
+    align-items: center;
+  }
+  
+  .upcoming .movies_box .box .card .details .left .info .time i{
+    font-size: 12px;
+    color: #ffd500;
+    margin-left: 5px;
+  }
+  
+  .upcoming .movies_box .box .card .details .left .info .time p{
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  
+  .upcoming .movies_box .box .card .details .right{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    transform: translateX(100px);
+    transition: 0.4s;
+    opacity: 0;
+  }
+  
+  .upcoming .movies_box .box .card:hover .details .right{
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .upcoming .movies_box .box .card .details .right i{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #ffe100;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #282931;
+    margin: 0 10px 8px 0;
+  }
+  
+  .upcoming .movies_box .box .card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  
+  
+  
+  /*----------*/
+  
+  .show{
+    width: 100%;
+    height: auto;
+    padding: 25px;
+    margin: 0 auto;
+    padding-bottom: 25px;
+  }
+  
+  .show .tv_show{
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .show .tv_show h1{
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .show .tv_show .box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .show .tv_show .box .card{
+    width: 250px;
+    height: 370px;
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .show .tv_show .box .card .details{
+    width: 250px;
+    height: 370px;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 8px;
+    transition: 0.3s;
+    opacity: 0;
+  }
+  
+  .show .tv_show .box .card:hover .details{
+    opacity: 1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.7));
+  }
+  
+  .show .tv_show .box .card .details .left{
+    position: absolutefl;
+    bottom: 0;
+    color: #fff;
+    transform: translateX(-100px);
+    transition: 0.4s;
+    opacity: 0;
+  }
+  
+  .show .tv_show .box .card:hover .details .left{
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .show .tv_show .box .card .details .left p.name{
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .show .tv_show .box .card .details .left .date_quality{
+    display: flex;
+    align-items: center;
+  }
+  
+  .show .tv_show .box .card .details .left .date_quality p.quality{
+    width: 30px;
+    font-size: 13px;
+    background: #ffe100;
+    color: #282931;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .show .tv_show .box .card .details .left .date_quality p.date{
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .show .tv_show .box .card .details .left p.category{
+    margin-left: 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .show .tv_show .box .card .details .left .info{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .show .tv_show .box .card .details .left .info .rate{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .show .tv_show .box .card .details .left .info .rate i{
+    font-size: 12px;
+    color: #ffd500;
+    margin-right: 5px;
+  }
+  
+  .show .tv_show .box .card .details .left .info .rate p{
+    font-size: 12px;
+  }
+  
+  .show .tv_show .box .card .details .left .info .time{
+    display: flex;
+    align-items: center;
+  }
+  
+  .show .tv_show .box .card .details .left .info .time i{
+    font-size: 12px;
+    color: #ffd500;
+    margin-left: 5px;
+  }
+  
+  .show .tv_show .box .card .details .left .info .time p{
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  
+  .show .tv_show .box .card .details .right{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    transform: translateX(100px);
+    transition: 0.4s;
+    opacity: 0;
+  }
+  
+  .show .tv_show .box .card:hover .details .right{
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .show .tv_show .box .card .details .right i{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #ffe100;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #282931;
+    margin: 0 10px 8px 0;
+  }
+  
+  .show .tv_show .box .card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .col-lg-2.custom-card {
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+.container {
+  display: flex; /* ใช้ Flexbox */
+  justify-content: space-between; /* จัดให้อยู่ทั้งสองข้าง */
+  align-items: center; /* จัดให้อยู่กลางในแนวตั้ง */
+}
+
+.social {
+  width: 100px;
+  margin-left: 95px; /* ให้ปุ่มอยู่ทางด้านขวา */
+
+}
+
+
+/* General styles for the button */
+.btn-video {
+  position: relative;
+  width: 100px; /* Width of the button */
+  padding-left: 20px; /* Padding for the left side to make space for the icon */
+  background-color: #ffaf03; /* Change button color to red */
+  color: white; /* Text color inside the button */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Optional: add rounded corners */
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.btn-video:hover {
+  background-color: #ff8500; /* Darker shade of orange */
+}
+
+/* Styles for the video icon */
+.btn-video i {
+  position: absolute;
+  left: 10px; /* Positioning the icon to the left */
+  top: 50%; /* Vertically centering the icon */
+  transform: translateY(-50%); /* Adjusting for vertical alignment */
+  color: white; /* Icon color */
+}
+
+
+
+
+
+
+@media (max-width: 992px) {
+    .col-md-4.custom-card {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+}
+@media (max-width: 768px) {
+    .col-md-4.custom-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+
+  
+
+
+  /* ////////////////////////////  แยกหมวดหมู่ ///////////////////////////////////////  */
+form {
+  width: 95%; /* ทำให้ฟอร์มมีความกว้าง 100% */
+  margin: 10px 0; /* ให้มีระยะห่าง */
+
+}
+.category-select {
+    margin-top: 70px;
+    padding: 0 70px 0 0;
+}
+
+.form-group.select {
+  position: relative;          /* Position relative to allow absolute positioning of children */
+  display: flex;              /* Use flexbox for alignment and layout */
+  width: 20em;                /* Width of the dropdown */
+  height: 2.5em;              /* Height of the dropdown */
+  line-height: 3;             /* Line height for text within the dropdown */
+  background: transparent;    /* Background color, transparent for this case */
+  overflow: hidden;           /* Hide overflow content */
+  border-radius: 0.25em;      /* Rounded corners */
+  margin-bottom: -30px;       /* Negative margin for layout adjustments */
+}
+
+.form-group.select select {
+  flex: 1;                    /* Allow the select element to grow */
+  padding: 0 0.9em;           /* Padding inside the select box */
+  font-size: 1em;             /* Font size for the select text */
+  color: #fff;                /* Text color */
+  background: #5c6664;        /* Background color for the select box */
+  border: none;               /* Remove borders */
+  outline: none;              /* Remove outline */
+  cursor: pointer;            /* Pointer cursor for dropdown */
+}
+
+.form-group.select::after {
+  content: '\25BC';           /* Dropdown arrow */
+  position: absolute;         /* Absolute position for the arrow */
+  top: 0;                     /* Align to the top */
+  right: 0;                   /* Align to the right */
+  padding: 0 1em;            /* Padding around the arrow */
+  background: #2b2e2e;        /* Background color of the arrow area */
+  cursor: pointer;            /* Pointer cursor */
+  transition: color 0.25s ease; /* Transition effect for hover */
+}
+
+.form-group.select:hover::after {
+  color: #23b499;             /* Change arrow color on hover */
+}
+
+.form-group.select select::-ms-expand {
+  display: none;              /* Hide the default dropdown arrow in IE */
+}
+
+select {
+    align-items: center;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0!important;
+    background: #5c6664;
+    background-image: none;
+    flex: 1;
+    padding: 0 .9em;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 2.5em;
+    line-height: 3;
+    background: transparent;
+    overflow: hidden;
+    border-radius: .25em;
+    margin-bottom: -30px;
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #2b2e2e;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+}
+
+.select:hover::after {
+    color: #23b499;
+}
+
+.search-container {
+  display: flex;
+  justify-content: flex-end; /* จัดแนวไปทางขวา */
+  align-items: center; /* จัดแนวแนวตั้งให้ตรงกลาง */
+  padding-right: 100px; /* ระยะห่างทางขวา */
+  margin-top: 70px; /* เพิ่มระยะห่างด้านบน */
+}
+
+.search-container .form-group {
+  margin-left: 5px; /* ระยะห่างเล็กน้อยระหว่าง dropdown และปุ่ม search */
+}
+
+.search-container .btn-primary {
+  width: 80px; /* ขนาดของปุ่มค้นหา */
+  padding: 5px 10px; /* Padding ของปุ่ม */
+  font-size: 0.9em; /* ขนาดของข้อความในปุ่ม */
+}
+
+
+
+
+
+
+
+
+   /* 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /                                                                                                                                  /
+  /                                                         รายละเอียดภาพยนต์                                                            /
+  /                                                                                                                                   /
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+        .container-moviedetail {
+            width: 100%;
+            padding: 30px;
+            box-sizing: border-box; /* Include padding in width calculation */
+            margin-top: 70px;
+        }
+
+        .movie-info {
+            display: flex;
+            margin-top: 20px;
+            max-width: 1300px; /* Set a maximum width for larger screens */
+            width: 100%; /* Ensure it fills available space */
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            min-height: 400px; /* Maintain minimum height */
+            overflow: hidden; /* Prevent overflow */
+            margin-left: auto; /* Center the movie-info */
+            margin-right: auto; /* Center the movie-info */
+        }
+        .movie-poster {
+            max-width: 250px; /* Adjust poster width */
+            margin-right: 30px;
+            align-self: flex-start; /* Align poster to the top */
+            position: relative;
+        }
+        .movie-poster img {
+            width: 230px; /* Responsive width */
+            height: 370px; /* Maintain aspect ratio */
+            border-radius: 10px;
+            transition: transform 0.3s; /* Smooth scaling effect */
+        }
+        .movie-poster img:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+        .movie-detail {
+            flex: 1; /* Allow details to take up more space */
+            align-self: flex-start;
+        }
+        .movie-detail h2 {
+            margin-top: 0;
+            font-size: 2rem; /* Increase font size */
+            color: #f5c518; /* Title color */
+        }
+        .movie-detail p {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.5; /* Improve readability */
+        }
+        .ratings {
+            display: flex;
+            margin-top: 10px;
+            flex-direction: column; /* Stack ratings vertically */
+        }
+        .rating {
+            margin-top: 5px; /* Add space between ratings */
+        }
+        .rating span {
+            font-size: 1.2rem; /* Increase font size for ratings */
+            color: #f5c518; /* Rating text color */
+        }
+        .button-moviedetail {
+            background-color: #f5c518;
+            border: none;
+            padding: 10px 20px;
+            color: #000;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Smooth transition */
+            margin-top: 20px; /* Space above button */
+        }
+        .button-moviedetail:hover {
+            background-color: #d4b610; /* Darker shade on hover */
+        }
+        .movie-detail-video {
+            max-width: 800px; /* Set a max width for the video */
+            align-items: center;
+            flex: 1; /* Allow video to take more space */
+        }
+        .movie-detail-video iframe {
+            width: 100%; /* Full width of video container */
+            height: 450px; /* Set height for video */
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for video */
+        }
+        .cast {
+            margin-top: 30px; /* Space above cast section */
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+        }
+        .cast h3 {
+            margin-top: 0;
+            color: #f5c518; /* Cast title color */
+        }
+        .cast-list {
+            display: flex;
+            flex-wrap: wrap; /* Wrap actors to new lines if necessary */
+            gap: 20px; /* Space between actors */
+        }
+        .actor {
+            max-width: 150px; /* Maximum width for actor box */
+            text-align: center;
+            color: #ccc;
+        }
+        .actor img {
+            width: 100%; /* Responsive width for actor images */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .movie-info {
+                flex-direction: column; /* Stack items vertically on smaller screens */
+                align-items: center; /* Center align for better layout */
+            }
+            .movie-detail-video {
+                margin-left: 0; /* Remove left margin on small screens */
+                margin-top: 20px; /* Add margin above video */
+                max-width: 100%; /* Allow full width on smaller screens */
+            }
+            .cast-list {
+                flex-direction: column; /* Stack actor boxes vertically on small screens */
+                align-items: center; /* Center align */
+            }
+        }
+
+
+
+
+ /* 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /                                                                                                                                  /
+  /                                                         เวลา-รอบฉาย                                                                  /
+  /                                                                                                                                   /
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+
+
+
+
+  /* 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /                                                                                                                                  /
+  /                                                         หน้าโรงหนัง                                                                /
+  /                                                                                                                                   /
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+  
+/*///////////////////////////////////// ปก///////////////////////////////////////////// */
+
+
+
+.bg-mv1 {
+  position: relative; /* ตำแหน่งที่สัมพันธ์กับ parent */
+  width: 100%; /* กว้างเต็มพื้นที่ */
+}
+
+.bg-mv1 img {
+  width: 100%; /* ให้ภาพกว้างเต็มพื้นที่ */
+  object-fit: cover; /* ทำให้ภาพเต็มพื้นที่โดยรักษาสัดส่วน */
+}
+
+
+
+
+
+/*///////////////////////////////////// ข้อมูลโรงภาพยนต์  ///////////////////////////////////////////// */
+
+
+
+.cinema-container {
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex; /* ใช้ flex เพื่อจัดการจัดเรียงของ cinema-info */
+  flex-direction: column; /* จัดเรียงแนวตั้ง */
+  align-items: center; /* จัดกลาง */
+  margin: 0 40px; /* ระยะห่างจากขอบจอ 40px */
+  transition: transform 0.3s ease; /* เพิ่มการเคลื่อนไหว */
+}
+
+.cinema-container:hover {
+  transform: translateY(-5px); /* ยกขึ้นเล็กน้อยเมื่อเมาส์อยู่เหนือ */
+}
+
+.cinema-info {
+  display: block; /* เปลี่ยนเป็น block เพื่อให้เห็นผล */
+  margin-bottom: 30px;
+  width: 1200px; /* กำหนดความกว้างเป็น 1200px */
+  height: 300px; /* กำหนดความสูงเป็น 300px */
+  text-align: center; /* จัดให้ข้อความอยู่กลาง */
+  overflow: hidden; /* ป้องกันไม่ให้เนื้อหาล débord */
+  transition: background-color 0.3s ease; /* เพิ่มการเปลี่ยนแปลง */
+}
+
+.movie {
+  display: flex; /* ใช้ flex เพื่อจัดระเบียบรูปภาพและข้อมูล */
+  align-items: center; /* จัดแนวในแนวตั้ง */
+  background-color: rgba(0, 0, 0, 0.7); /* พื้นหลังดำโปร่งใส */
+  border-radius: 8px;
+  padding: 15px; /* เพิ่ม padding รอบๆ */
+  margin: 10px 0; /* ระยะห่างระหว่างรายการ */
+  width: 100%; /* ให้ความกว้างเต็มที่ */
+  height: 100%;
+  transition: transform 0.3s ease; /* เพิ่มการเคลื่อนไหว */
+}
+
+.movie:hover {
+  transform: scale(1.02); /* ขยายเมื่อเลื่อนเมาส์ */
+}
+
+.movie-img {
+  width: 500px; /* เพิ่มความกว้างของรูปภาพ */
+  height: auto; /* อนุญาตให้ความสูงเปลี่ยนแปลงตามอัตราส่วน */
+  object-fit: cover; /* ให้ปรับขนาดตามอัตราส่วน */
+  border-radius: 5px; /* มุมโค้งของรูปภาพ */
+  margin-right: 20px; /* ระยะห่างระหว่างรูปภาพกับเนื้อหา */
+}
+
+.movie-details-dt {
+  flex-direction: column; /* จัดเรียงข้อมูลในแนวตั้ง */
+  justify-content: center; /* จัดกลางในแนวตั้ง */
+  align-items: center; /* จัดกลางในแนวนอน */
+  flex-grow: 1; /* ให้ส่วนนี้ใช้พื้นที่ที่เหลือ */
+  margin-left: 40px;
+}
+
+.cinima-detials-name {
+  color: white; /* สีตัวอักษร */
+  text-align: left; /* ปรับให้ข้อความซ้าย */
+}
+
+.cinima-detials-name h3 {
+  font-size: 30px;
+  margin-bottom: 5px; /* เพิ่มระยะห่างระหว่างหัวเรื่องและเนื้อหา */
+}
+
+.cinima-detials-name p {
+  font-size: 20px;
+  color: yellow; /* สีตัวอักษร */
+}
+
+.movie-buttons {
+  display: flex; /* ใช้ flex เพื่อจัดเรียงปุ่ม */
+  flex-direction: column; /* จัดเรียงปุ่มในแนวตั้ง */
+  align-items: flex-end; /* จัดตำแหน่งปุ่มอยู่ด้านขวา */
+}
+
+.book-btn {
+  width: 250px;
+  height: 40px;
+  background-color: #ff6600; /* สีพื้นหลัง */
+  color: white; /* สีตัวอักษร */
+  border: none; /* ไม่มีขอบ */
+  border-radius: 5px; /* มุมโค้ง */
+  text-decoration: none; /* ลบเส้นใต้ */
+  padding: 10px 20px; /* padding รอบๆ */
+  cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือ */
+  font-size: 20px; /* ขนาดตัวอักษร */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* เพิ่มการเปลี่ยนแปลง */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+}
+
+.book-btn:hover {
+  background-color: green; /* เปลี่ยนสีเมื่อเลื่อนเมาส์ */
+  transform: scale(1.05); /* ขยายปุ่มเมื่อเลื่อนเมาส์ */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* เปลี่ยนเงาเมื่อเลื่อนเมาส์ */
+}
+
+.book-btn:active {
+  transform: scale(0.95); /* ย่อขนาดเมื่อคลิก */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* คืนเงาเมื่อคลิก */
+}
+
+/* Cinema buttons for region selection */
+.cinema-buttons {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.cinema-btn {
+  background-color: transparent; /* สีพื้นหลังโปร่งใส */
+  color: white; /* สีตัวอักษร */
+  border: 2px solid green; /* ขอบสีเขียว */
+  border-radius: 5px; /* มุมโค้ง */
+  padding: 10px 20px; /* Padding รอบๆ */
+  margin: 5px; /* ระยะห่างระหว่างปุ่ม */
+  cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือ */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* เพิ่มการเปลี่ยนแปลง */
+}
+
+.cinema-btn:hover {
+  transform: scale(1.05); /* ขยายเมื่อเลื่อนเมาส์ */
+}
+
+.cinema-btn.active {
+  background-color: green; /* สีพื้นหลังเมื่อเลือก */
+  color: white; /* สีตัวอักษรเมื่อเลือก */
+}
+
+
+
+
+.popup {
+  display: none; /* ซ่อนป็อปอัพเริ่มต้น */
+  position: fixed; /* อยู่เหนือเนื้อหา */
+  z-index: 1000; /* อยู่ด้านบนสุด */
+  left: 0;
+  top: 0;
+  width: 100%; /* ความกว้างเต็ม */
+  height: 100%; /* ความสูงเต็ม */
+  background-color: rgba(0, 0, 0, 0.7); /* พื้นหลังโปร่งใส */
+  justify-content: center; /* จัดกลางแนวนอน */
+  align-items: center; /* จัดกลางแนวตั้ง */
+}
+
+.popup-content {
+  background-color: #fff; /* สีพื้นหลังของป็อปอัพ */
+  border-radius: 10px; /* มุมโค้ง */
+  padding: 20px; /* Padding รอบๆ */
+  width: 400px; /* ความกว้างของป็อปอัพ */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* เงา */
+}
+
+.close {
+  cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือ */
+  font-size: 24px; /* ขนาดตัวอักษร */
+  color: red; /* สีตัวอักษร */
+  float: right; /* จัดให้ชิดขวา */
+}
+
+#popup-title {
+  font-size: 24px; /* ขนาดตัวอักษรหัวข้อ */
+}
+
+#popup-location {
+  font-size: 20px; /* ขนาดตัวอักษรที่ตั้ง */
+}
+
+#popup-description {
+  font-size: 16px; /* ขนาดตัวอักษรคำบรรยาย */
+}
+
+
+
