@@ -1,7 +1,9 @@
 🎬 Online Movie Ticket Booking System
+
 This is a simple web-based application for booking movie tickets online. The system is developed using PHP and MySQL for backend management. It allows users to browse movies, search for showtimes, book tickets, and manage their profiles easily.
 
 📌 Features
+
 ✅ View Movie and Theater Details
 Users can browse through the available movies and theaters, and view detailed information about them.
 
